@@ -23,4 +23,5 @@ Markdown for typesetting documents for the course, e.g.
 - RMarkdown
 - Jupyter Notebooks
 - [Quarto](https://quarto.org/)
+
 Extensions for these systems are readily available for free in Microsoft VSCode.

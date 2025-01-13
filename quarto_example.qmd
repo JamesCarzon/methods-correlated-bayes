@@ -21,8 +21,18 @@ for VSCode's Quarto extension helpful to get started.
 Below is an example of an R code chunk:
 
 ```{r}
-x <- rnorm(100)
-summary(x)
+x <- rnorm(1000)
+library(ggplot2)
+
+# Create a data frame
+data <- data.frame(x = x)
+
+# Plot with ggplot2
+ggplot(data, aes(x = x)) +
+    geom_histogram(binwidth = 0.2, fill = "blue", color = "black") +
+    labs(title = "Histogram of Gaussian Noise",
+             x = "Value",
+             y = "Frequency")
 ```
 
 ## Using Python
@@ -30,9 +40,9 @@ summary(x)
 To use Python in your project, it is advisable to create a virtual environment. 
 [This page](https://quarto.org/docs/projects/virtual-environments.html) gives 
 some tips on creating and using a virtual environment and activating it for 
-Quarto in VSCode, for example. I used Conda to make my environment in the same 
-working directory as this Git repository. Then I created a file in the same 
-directory called `.Rprofile` with the rote command
+Quarto in VSCode, for example. I used Conda to make my environment (called 
+`env`) in the same working directory as this Git repository. Then I created a 
+file in the same directory called `.Rprofile` with this command:
 ```
 Sys.setenv(RETICULATE_PYTHON = "env/bin/python")
 ```
@@ -47,4 +57,15 @@ library(reticulate)
 
 ```{python}
 import numpy as np
+import matplotlib.pyplot as plt
+
+# Generate Gaussian noise
+noise = np.random.normal(0, 1, 1000)
+
+# Plot the noise
+plt.hist(noise, bins=30, edgecolor='k')
+plt.title('Histogram of Gaussian Noise')
+plt.xlabel('Value')
+plt.ylabel('Frequency')
+plt.show()
 ```
